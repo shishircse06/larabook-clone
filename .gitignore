@@ -1,0 +1,11 @@
+/bootstrap/compiled.php
+/vendor
+/uploads
+/vendor-new
+composer.phar
+.env.*.php
+.env.php
+.DS_Store
+Thumbs.db
+todo.md
+.idea
