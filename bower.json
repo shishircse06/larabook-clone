@@ -1,0 +1,18 @@
+{
+  "name": "larabook",
+  "version": "0.0.0",
+  "homepage": "https://github.com/shishircse06/larabook-clone",
+  "authors": [
+    "Shishir Mazumder <shishir_ruet@yahoo.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "~2.1.3"
+  },
+  "install":{
+	"path" : "public/js",
+    "sources" : {
+      "jquery": "public/bower_components/jquery/dist/jquery.min.js"
+    }
+}	
+}
