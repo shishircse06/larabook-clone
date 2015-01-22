@@ -16,6 +16,12 @@ $I->click('Sign Up');
 $I->seeCurrentUrlEquals('');
 $I->see('Welcome to Larabook!');
 
+$I->seeRecord('users',[
+   'username'=>'johnDoe',
+    'email'=>'john@example.com'
+]);
+
+
 
 
 
