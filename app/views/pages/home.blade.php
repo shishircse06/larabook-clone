@@ -2,7 +2,10 @@
 @section('content')
     <div class="jumbotron">
         <h1>Larabook demo</h1>
-        <p class="lead">Learning laravel from jeffrey way series larabook .</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up</a></p>
+        <p class="lead">Welcome to Larabook!</p>
+        <p>
+            {{link_to_route('register_path','Sign Up',null,['class'=>'btn btn-lg btn-primary'])}}
+
+        </p>
     </div>
 @stop
