@@ -1,6 +1,7 @@
 <?php
 
 use Larabook\Forms\registrationForm;
+use Laracasts\Commander\CommandBus;
 
 class RegistrationController extends \BaseController {
 
@@ -11,9 +12,14 @@ class RegistrationController extends \BaseController {
 	 */
 
 	private $registrationForm;
+	/**
+	 * @var CommandBus
+	 */
+	private $commandBus;
 
-	function __construct(RegistrationForm $registrationForm){
+	function __construct(CommandBus $commandBus,RegistrationForm $registrationForm){
 		$this->registrationForm=$registrationForm;
+		$this->commandBus = $commandBus;
 	}
 
 	public function index()
@@ -40,6 +46,10 @@ class RegistrationController extends \BaseController {
 	 */
 	public function store()
 	{
+
+		$command=new RegisterUserCommand;
+		$this->commandBus->execute($command);
+		
 		$this->registrationForm->validate(Input::All());
 
 		$user=User::create(
