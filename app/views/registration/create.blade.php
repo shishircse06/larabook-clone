@@ -6,6 +6,7 @@
             <h1>Register!</h1>
 
 
+           @include('layouts.partials.errors')
 
             {{ Form::open(['route' => 'register_path', 'name' => 'registrationForm']) }}
             <!-- Username Form Input -->

@@ -1,5 +1,7 @@
 <?php
 
+use Larabook\Forms\registrationForm;
+
 class RegistrationController extends \BaseController {
 
 	/**
@@ -7,6 +9,13 @@ class RegistrationController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
+	private $registrationForm;
+
+	function __construct(RegistrationForm $registrationForm){
+		$this->registrationForm=$registrationForm;
+	}
+
 	public function index()
 	{
 		//
@@ -31,6 +40,8 @@ class RegistrationController extends \BaseController {
 	 */
 	public function store()
 	{
+		$this->registrationForm->validate(Input::All());
+
 		$user=User::create(
 			Input::only('username','email','password')
 		);
