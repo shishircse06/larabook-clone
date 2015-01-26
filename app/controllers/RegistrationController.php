@@ -2,9 +2,10 @@
 
 use Larabook\Forms\registrationForm;
 use Larabook\Registration\RegisterUserCommand;
-use Laracasts\Commander\CommandBus;
+use Larabook\Core\CommandBus;
 
 class RegistrationController extends \BaseController {
+	use CommandBus;
 
 	/**
 	 * Display a listing of the resource.
@@ -16,11 +17,11 @@ class RegistrationController extends \BaseController {
 	/**
 	 * @var CommandBus
 	 */
-	private $commandBus;
 
-	function __construct(CommandBus $commandBus,RegistrationForm $registrationForm){
+
+	function __construct(RegistrationForm $registrationForm){
 		$this->registrationForm=$registrationForm;
-		$this->commandBus = $commandBus;
+
 	}
 
 	public function index()
@@ -52,7 +53,7 @@ class RegistrationController extends \BaseController {
 		extract(Input::only('username','email','password'));
 
 
-		$user=$this->commandBus->execute(
+		$user=$this->execute(
 			new RegisterUserCommand($username,$email,$password)
 		);
 
