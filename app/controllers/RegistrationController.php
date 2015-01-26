@@ -1,6 +1,7 @@
 <?php
 
 use Larabook\Forms\registrationForm;
+use Larabook\Registration\RegisterUserCommand;
 use Laracasts\Commander\CommandBus;
 
 class RegistrationController extends \BaseController {
@@ -46,16 +47,17 @@ class RegistrationController extends \BaseController {
 	 */
 	public function store()
 	{
-
-		$command=new RegisterUserCommand;
-		$this->commandBus->execute($command);
-		
 		$this->registrationForm->validate(Input::All());
 
-		$user=User::create(
-			Input::only('username','email','password')
+		extract(Input::only('username','email','password'));
+
+
+		$user=$this->commandBus->execute(
+			new RegisterUserCommand($username,$email,$password)
 		);
+
 		Auth::login($user);
+
 		return Redirect::home();
 	}
 
