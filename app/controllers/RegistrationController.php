@@ -59,7 +59,7 @@ class RegistrationController extends \BaseController {
 
 		Auth::login($user);
 
-		return Redirect::home();
+		return Redirect::home()->with('flash_message','Thanks for registration!');
 	}
 
 
