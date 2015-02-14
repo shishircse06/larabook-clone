@@ -1,0 +1,7 @@
+Larabook\Users\User:
+  username: $string
+  email: ssdfh@example.com
+  password: $string
+  created_at: $date
+  updated_at: $date
+  remember_token: $string
