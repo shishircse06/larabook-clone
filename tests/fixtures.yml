@@ -5,3 +5,11 @@ Larabook\Users\User:
   created_at: $date
   updated_at: $date
   remember_token: $string
+
+Larabook\Statuses\Status:
+  user_id:
+    type: Larabook\Users\User
+  body: $text
+  created_at: $date
+  updated_at: $date
+
