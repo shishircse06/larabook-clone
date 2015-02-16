@@ -1,6 +1,25 @@
 @extends('layouts.default')
 
 @section('content')
-    <h1>Statuses here!</h1>
+    <div class="status-post">
+        {{ Form::open(['route' => 'statuses_path']) }}
+        <!-- Status Form Input -->
+        <div class="form-group">
+
+            {{ Form::textarea('body', null, ['class' => 'form-control', 'rows' => 3, 'placeholder' => "What's on your mind?"]) }}
+        </div>
+
+        <div class="form-group status-post-submit">
+            {{ Form::submit('Post Status', ['class' => 'btn btn-default btn-xs']) }}
+        </div>
+        {{ Form::close() }}
+
+        <h2>Statuses</h2>
+        @foreach($statuses as $status)
+            <article>
+                {{$status->body}}
+            </article>
+        @endforeach
+    </div>
 
 @stop
