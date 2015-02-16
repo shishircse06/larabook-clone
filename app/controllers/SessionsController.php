@@ -8,7 +8,7 @@ class SessionsController extends \BaseController {
 	function __construct(SignInForm $signInForm)
 	{
 		$this->signInForm=$signInForm;
-		$this->beforeFilter('guest');
+		$this->beforeFilter('guest',['except'=>'destroy']);
 
 	}
 
@@ -94,9 +94,10 @@ class SessionsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy()
 	{
-		//
+		Auth::logout();
+		return Redirect::home()->with('flash_message','You have logged out now!');
 	}
 
 
