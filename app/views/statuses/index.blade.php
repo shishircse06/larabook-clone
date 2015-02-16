@@ -2,6 +2,8 @@
 
 @section('content')
     <div class="status-post">
+
+        @include('layouts.partials.errors')
         {{ Form::open(['route' => 'statuses_path']) }}
         <!-- Status Form Input -->
         <div class="form-group">
@@ -10,7 +12,7 @@
         </div>
 
         <div class="form-group status-post-submit">
-            {{ Form::submit('Post Status', ['class' => 'btn btn-default btn-xs']) }}
+            {{ Form::submit('Post Status', ['class' => 'btn btn-default btn-primary']) }}
         </div>
         {{ Form::close() }}
 
