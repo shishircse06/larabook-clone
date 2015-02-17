@@ -23,7 +23,7 @@ class StatusRepository {
      * @return mixed
      */
     public function getAll(User $user){
-        //return $user->statuses()->get();
+        return $user->statuses()->get();
     }
 
     /**
