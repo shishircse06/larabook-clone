@@ -11,12 +11,29 @@ namespace Larabook\Statuses;
 
 use Larabook\Users\User;
 
+/**
+ * Class StatusRepository
+ * @package Larabook\Statuses
+ */
 class StatusRepository {
 
+    /**
+     * @param User $user
+     * get all statuses for a user
+     * @return mixed
+     */
     public function getAll(User $user){
-        return $user->statuses()->get();
+        //return $user->statuses()->get();
     }
 
+    /**
+     *
+     * @param Status $status
+     * @param $userId
+     * save status for a specific user
+     *
+     * @return mixed
+     */
     public function save(Status $status, $userId){
 
         return User::findOrFail($userId)->statuses()->save($status);
