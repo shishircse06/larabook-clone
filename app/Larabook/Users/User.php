@@ -7,6 +7,7 @@ use Illuminate\Auth\Reminders\RemindableInterface;
 use Eloquent,Hash;
 use Larabook\Registration\Events\UserRegistered;
 use Laracasts\Commander\Events\EventGenerator;
+use Laracasts\Presenter\PresentableTrait;
 
 /**
  * Class User
@@ -14,7 +15,7 @@ use Laracasts\Commander\Events\EventGenerator;
  */
 class User extends Eloquent implements UserInterface, RemindableInterface {
 
-	use UserTrait, RemindableTrait,EventGenerator;
+	use UserTrait, RemindableTrait,EventGenerator,PresentableTrait;
 
 	/**
 	 * The database table used by the model.
@@ -22,6 +23,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 * @var string
 	 */
 	protected $table = 'users';
+
+	protected $presenter = 'Larabook\Users\UserPresenter';
 	protected $fillable=['username','email','password'];
 
 	/**
@@ -53,6 +56,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
      */
 	public function statuses(){
 		return $this->hasMany('Larabook\Statuses\Status');
+	}
+
+	public function gravatarLink(){
+
+		$email = md5($this->email);
+		return "//www.gravatar.com/avatar/{$email}?s=30";
 	}
 
 }

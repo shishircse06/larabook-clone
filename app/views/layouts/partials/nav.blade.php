@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
     <div class="container">
           <div class="navbar-header">
@@ -24,7 +25,7 @@
 
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        <img src="//www.gravatar.com/avatar/{{md5($currentUser->email)}}?s=30" alt="{{$currentUser->username}}"/>
+                        <img src="{{$currentUser->present()->gravatar()}}" alt="{{$currentUser->username}}"/>
                         {{$currentUser->username}}
                         <span class="caret"></span>
                     </a>
